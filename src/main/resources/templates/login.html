@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel="stylesheet" href="./login.css">
 </head>
 <body>
-	<h1>Login page</h1>
-	<a href="/home">Home</a>
+
+<div class="container">
+    <h2>Login</h2>
+    <form action="/login" method="post">
+        <label for="email_mobile">Email/Mobile:</label><br>
+        <input type="text" id="email_mobile" name="email_mobile" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login"><br><br>
+    </form>
+    <a href="#">Forgot Password?</a><br><br>
+    <a href="/signup">Don't have an account? Sign Up</a>
+</div>
+
 </body>
 </html>

@@ -23,4 +23,10 @@ public class GeneralController {
 	{
 		return "login.html";
 	}
+	
+	@GetMapping("/signup")
+	public String loadSignup() 
+	{
+		return "signup.html";
+	}
 }
