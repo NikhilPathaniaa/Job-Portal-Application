@@ -10,9 +10,9 @@
 
 <div class="container">
     <h2>Sign Up</h2>
-    <form action="/signup" method="post">
+    <form action="/signup" method="post" th:object="${portalUser}">
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" ><br>
+        <input type="text" id="name" name="name" th:field="*{name}"><span th:errors="*{name}"></span><br>
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" ><br>
         <label for="mobile">Mobile:</label><br>
@@ -32,6 +32,6 @@
     </form>
     <p>Already have an account? <a href="/login">Login</a></p>
 </div>
-
+	<script src="./js/validation.js"></script>
 </body>
 </html>
