@@ -1,37 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signup Page</title>
-<link rel="stylesheet" href="./css/signup.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Multi-step form</title>
+    <link rel="stylesheet" href="./css/signup.css" />
+    <script src="./js/validation.js" defer></script>
+  </head>
+  <body>
+    <div class="form">
+      <div class="form-container">
+        <!-- Sidebar start -->
+        <div class="form-sidebar">
+          <div class="step active">
+            <div class="circle">1</div>
+            <div class="step-content">
+              <span>Step 1</span>
+              <b>Your info</b>
+            </div>
+          </div>
+          <div class="step">
+            <div class="circle">2</div>
+            <div class="step-content">
+              <span>Step 2</span>
+              <b>Select plan</b>
+            </div>
+          </div>
+          <div class="step">
+            <div class="circle">3</div>
+            <div class="step-content">
+              <span>Step 3</span>
+              <b>Add-ons</b>
+            </div>
+          </div>
+          <div class="step">
+            <div class="circle">4</div>
+            <div class="step-content">
+              <span>Step 4</span>
+              <b>Summary</b>
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar end -->
+        <!-- * Step 1 start -->
+        <div class="stp step-1">
+          <div class="header">
+            <h1 class="title">Personal info</h1>
+            <p class="exp">
+              Please provide your name, email address, and phone number.
+            </p>
+          </div>
+          <form>
+            <div class="label">
+              <label for="name">Name</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input
+              required
+              type="text"
+              id="name"
+              name="name1"
+              placeholder="e.g. Stephen King"
+            />
+            <div class="label">
+              <label for="email">Email Address</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input
+              required
+              type="text"
+              id="email"
+              name="email1"
+              placeholder="e.g. stephenking@lorem.com"
+            />
+            <div class="label">
+              <label for="phone">Phone Number</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input
+              required
+              type="tel"
+              id="phone"
+              placeholder="e.g. +1 234 567 890"
+              name="phone1"
+            />
+          </form>
+          <div class="btns">
+            <button class="next-stp" type="submit">Next Step</button>
+          </div>
+        </div>
+        <!-- Step 1 end -->
+        <!-- * Step 2 start -->
+        <div class="stp step-2">
+          <div class="header">
+            <h1 class="title">Select your Role</h1>
+            <p class="exp">You have the option of Recruiter or Applicant Roles .</p>
+          </div>
+          <form>
+              <div class="plan-card selected">
+                <img src="./assets/images/icon-arcade.svg" alt="arcade" />
+                <div class="plan-info chosen">
+                  <b>Recruiter</b>
+                  <!-- <span class="plan-priced">$9/mo</span> -->
+                </div>
+              </div>
+            <div class="plan-card">
+              <img src="./assets/images/icon-pro.svg" alt="arcade" />
+              <div class="plan-info">
+                <b>Applicant</b>
+                <!-- <span class="plan-priced">$15/mo</span> -->
+              </div>
+            </div>
+          </form>
+          
+          <div class="btns">
+            <button class="prev-stp" type="button">Go Back</button>
+            <button class="next-stp" type="submit">Next Step</button>
+          </div>
+        </div>
+        <!-- Step 2 end -->
+        <!-- * Step 3 start -->
+        <div class="stp step-3">
+          <div class="header">
+            <h1 class="title">Security info</h1>
+            <p class="exp">
+              Please provide your Dob , password, and confirm-password.
+            </p>
+          </div>
+          <form>
+            <div class="label">
+              <label for="name">Dob</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input required type="date" id="dob" name="dob1"/>
+            <div class="label">
+              <label for="email">Password</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input required type="password" id="password" placeholder="password" name="password1"/>
+            <div class="label">
+              <label for="phone">confirm-password</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input
+              required type="text" id="confirm-password" placeholder="confirm-password" name="confirm-password1" />
+          </form>
+          <div class="btns">
+            <button class="prev-stp" type="button">Go Back</button>
+            <button class="next-stp" type="submit">Next Step</button>
+          </div>
+        </div>
+        <!-- Step 3 end -->
+        <!-- * Step 4 start -->
+        
+        <div class="stp step-4">
+          <div class="header">
+            <h1 class="title">Finishing up</h1>
+            <p class="exp">
+              Double-check everything looks OK before confirming.
+            </p>
+          </div>
+          <div class="selection-box">
+            <form action="#" method="get">
+              Name
+              <input type="text" id="name1" name="name" value="" readonly><br>
+              Email
+              <input type="email" id="email1" name="email" value="" readonly><br>
+              
+              Mobile
+              <input type="text" id="mobile1" name="mobile" value="" readonly><br>
 
-<div class="container">
-    <h2>Sign Up</h2>
-    <form action="/signup" method="post" th:object="${portalUser}">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" th:field="*{name}"><span th:errors="*{name}"></span><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" ><br>
-        <label for="mobile">Mobile:</label><br>
-        <input type="text" id="mobile" name="mobile" ><br>
-        <label for="dob">Date of Birth:</label><br>
-        <input type="date" id="dob" name="dob" ><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" ><br>
-        <label for="confirm_password">Confirm Password:</label><br>
-        <input type="text" id="confirm_password" name="confirm_password" ><br>
-        <label for="role">Role:</label><br>
-        <input type="radio" id="applicant" name="role" value="applicant" checked>
-        <label for="applicant">Applicant</label>
-        <input type="radio" id="recruiter" name="role" value="recruiter">
-        <label for="recruiter">Recruiter</label><br><br>
-        <input type="submit" value="Sign Up"><br><br>
-    </form>
-    <p>Already have an account? <a href="/login">Login</a></p>
-</div>
-	<script src="./js/validation.js"></script>
-</body>
+              Date of Birth
+              <input type="date" id="dob1" name="dob" value="" readonly><br>
+              <!-- <label for="password">Password</label><br> -->
+              <input type="password" id="password1" name="password" value="" hidden readonly>
+              
+              <input type="password" id="pass" name="password" value="" readonly hidden>
+
+              <!-- <label for="confirm_password">Confirm Password</label><br> -->
+              <input type="password" id="conpass" name="confirm_password" value="" hidden readonly>
+               
+              role
+              <input type="text" id="role1" name="role" value="" readonly><br>
+              
+              <input type="submit" value="Sign Up"><br><br>
+          </form>
+          </div>
+          <div class="btns">
+            <button class="prev-stp" type="button">Go Back</button>
+            <button class="next-stp" type="submit" hidden>Next Step</button>
+          </div>
+        </div>
+        <!-- Step 4 end -->
+        <!-- Step 5 start -->
+        <div class="stp step-5">
+          <img src="./assets/images/icon-thank-you.svg" alt="" />
+          <div class="header">
+            <h1 class="title">Thank you!</h1>
+            <p class="exp">
+              Thanks for confirming your subscription! We hope you have fun
+              using our platform. If you ever need support, please feel free to
+              email us at support@loremgaming.com.
+            </p>
+          </div>
+          <button class="next-stp"></button>
+        </div>
+        <!-- Step 5 end -->
+      </div>
+    </div>
+  </body>
 </html>
