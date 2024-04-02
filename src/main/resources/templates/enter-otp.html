@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--  <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -11,5 +11,66 @@
 		<input type="hidden" name="id" th:value="${id}">
 		<button>Submit</button>
  	</form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>OTP Validation</title>
+    <link rel="stylesheet" href="./css/signup.css" />
+</head>
+<body>
+	<div class="form">
+		<div class="form-container">
+		  <!-- Sidebar start -->
+		  <div class="form-sidebar">
+			<div class="step active">
+			  <div class="circle">5</div>
+			  <div class="step-content">
+				<span>OTP</span>
+				<b>Validation</b>
+			  </div>
+			</div>
+		  </div>
+		  <div class="stp step-1">
+			<br><br><br>
+			<div class="header">
+			  <h1 class="title">OTP Validation</h1>
+			  <p class="exp">
+				Please provide The otp sended to your entered email address.
+			  </p>
+			</div>
+			<h1 th:text="${msg}"></h1>
+			
+		<form action="/submit-otp" method="post">
+			<div class="label">
+				<label for="name">Enter OTP:</label>
+			</div>
+			<input type="number" name="otp">
+			<input type="hidden" name="id" th:value="${id}">
+			<button class="next-stp" type="submit">Submit</button>
+ 		</form>
+		  </div>
+		</div>
+		
+	</div>
+	
 </body>
 </html>
