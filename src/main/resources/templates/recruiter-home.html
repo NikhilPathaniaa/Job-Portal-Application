@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="./css/user.css">
+</head>
+<body>
+<h1 th:text="${msg}"></h1>
+  <div class="profile-container">
+    <div class="profile">
+      <div class="profile-picture"></div>
+      <div class="profile-info">
+        <h1 class="name">John Doe</h1>
+        <p class="email">john@example.com</p>
+        <button class="edit-btn">Edit Profile</button>
+      </div>
+      <div class="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+      <div class="education">
+        <h2>Education</h2>
+        <ul>
+          <li>Bachelor's in Computer Science</li>
+          <li>University of Example</li>
+        </ul>
+      </div>
+      <div class="resume">
+        <h2>Resume</h2>
+        <a href="#" class="resume-link">Download Resume</a>
+      </div>
+    </div>
+    <th:block th:if="${!session.portalUser.profileComplete}">
+	<a href="/recruiter/complete-profile"><button>Complete Your Profile</button></a>
+    <div class="edit-profile">
+      <input type="text" class="edit-name" placeholder="Enter your name">
+      <input type="email" class="edit-email" placeholder="Enter your email">
+      <input type="file" class="edit-picture" accept="image/*">
+      <button class="save-btn">Save</button>
+    </div>
+  </div>
+  <a href="/logout"><button>Logout</button></a>
+  <script src="script.js"></script>
+</body>
+</html>

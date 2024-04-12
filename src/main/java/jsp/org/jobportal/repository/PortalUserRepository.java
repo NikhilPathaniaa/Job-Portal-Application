@@ -6,6 +6,11 @@ import jsp.org.jobportal.dto.PortalUser;
 
 public interface PortalUserRepository extends JpaRepository<PortalUser, Integer>
 {
+	PortalUser findByMobile(long mobile);
 
-	boolean existsByEmail(String email);
+	PortalUser findByEmail(String email);
+
+	boolean existsByMobile(long mobile);
+
+	boolean existsByEmailAndVerifiedTrue(String email);
 }

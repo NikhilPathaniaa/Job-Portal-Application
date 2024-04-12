@@ -64,8 +64,9 @@
 				<label for="name">Enter OTP:</label>
 			</div>
 			<input type="number" name="otp">
-			<input type="hidden" name="id" th:value="${id}">
+			<input type="text" name="id" th:value="${id}">
 			<button class="next-stp" type="submit">Submit</button>
+			<a th:href="'/resend-otp/'+${id}">Resend OTP</a>
  		</form>
 		  </div>
 		</div>

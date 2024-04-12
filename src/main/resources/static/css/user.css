@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/* Same as before */
+
+.profile .skills,
+.profile .education,
+.profile .resume {
+  margin-top: 20px;
+}
+
+.profile .skills h2,
+.profile .education h2,
+.profile .resume h2 {
+  margin: 0;
+  color: #333;
+}
+
+.profile .skills ul,
+.profile .education ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile .skills ul li,
+.profile .education ul li {
+  margin-bottom: 5px;
+  color: #777;
+}
+
+.profile .resume .resume-link {
+  display: block;
+  margin-top: 5px;
+  color: #3498db;
+  text-decoration: none;
+}
