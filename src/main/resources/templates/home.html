@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="./css/home.css">
+	<title>Job Portal - Home</title>
+	<th:block th:insert="~{fragments/header.html}"></th:block>
+	<link rel="stylesheet" href="/css/home.css">
 </head>
+
 <body>
-	<h1>Hello welcome home</h1>
-	
-	<a href="/login">Login</a>
-	<a href="/signup">Signup</a>
+	<th:block th:insert="~{fragments/navbar.html}"></th:block>
+	<div class="container mt-5 custom-background full-height full-width">
+		<th:block th:insert="~{fragments/message.html}"></th:block>
+	</div>
+	<th:block th:insert="~{fragments/footer.html}"></th:block>
 </body>
+
 </html>
