@@ -37,4 +37,12 @@ public class PortalUserDao {
 	public PortalUser findUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
+
+	public boolean existsByMobile(long mobile) {
+		return userRepository.existsByMobileAndVerifiedTrue(mobile);
+	}
+
+	public List<PortalUser> fetchRecruiters() {
+		return userRepository.findByRecruiterDetailsNotNull();
+	}
 }

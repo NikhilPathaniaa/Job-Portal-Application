@@ -27,19 +27,18 @@ public class PortalUser {
 	private int id;
 	@Size(min = 3, max = 15, message = "* Enter between 3~15 charecters")
 	private String name;
-	@NotEmpty(message = "* this is required field")
+	@NotEmpty(message = "* This is required field")
 	@Email(message = "* Enter Proper Email Format")
 	private String email;
 	@DecimalMin(value = "6000000000", message = "* Enter Proper Mobile Number")
 	@DecimalMax(value = "9999999999", message = "* Enter Proper Mobile Number")
 	private long mobile;
-	@NotNull(message = "* this is required field")
 	private LocalDate dob;
 	@Size(min = 8, max = 15, message = "* Enter between 8~15 charecters")
 	private String password;
 	@Size(min = 8, max = 15, message = "* Enter between 8~15 charecters")
 	private String confirm_password;
-	@NotNull(message = "* this is required field")
+	@NotNull(message = "* This is required field")
 	private String role;
 	private int otp;
 	private boolean verified;
@@ -50,9 +49,4 @@ public class PortalUser {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private ApplicantDetails applicantDetails;
-
-	public void setCompletedProfile(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
 }
