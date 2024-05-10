@@ -20,41 +20,96 @@ import jsp.org.jobportal.dto.PortalUser;
 @Service
 public class ApplicantService {
 
-	private Cloudinary cloudinary;
-	
 	@Autowired
 	PortalUserDao userDao;
 
-	public ApplicantService(@Value("${apiname}")String cloudName ,@Value("${apikey}")String cloudKey,@Value("${apisecretKey}")String secretKey){
-		this.cloudinary=new Cloudinary(ObjectUtils.asMap("cloud_name",cloudName,"api_key",cloudKey,"api_secret",secretKey));
-		
-	}
-	
-	public String completeProfile(ApplicantDetails  details, MultipartFile resume, HttpSession session, ModelMap map) {
+	@Autowired
+	JobDao jobDao;
+
+	public String completeProfile(ApplicantDetails details, MultipartFile resume, HttpSession session, ModelMap map) {
 		PortalUser portalUser = (PortalUser) session.getAttribute("portalUser");
 		if (portalUser == null) {
-			map.put("msg", "Invalid Session");
+			session.setAttribute("failure", "Invalid Session");
 			return "home.html";
 		} else {
-			 String resumePath =uploadResume(resume);
+			String resumePath = uploadToCloudinary(resume);
+			details.setUser(portalUser);
 			details.setResumePath(resumePath);
 			portalUser.setApplicantDetails(details);
-			portalUser.setCompletedProfile(true);
+			portalUser.setProfileComplete(true);
 			userDao.saveUser(portalUser);
-			map.put("msg", "Profile is Completed");
-			return "applicant.html";
+			session.setAttribute("success", "Account Verified Success");
+			return "redirect:/";
 		}
 	}
 
-	private String uploadResume(MultipartFile resume) {
-		Map data=null;
+	public String uploadToCloudinary(MultipartFile file) {
+		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "djkyoabl5", "api_key",
+				"297695696273364", "api_secret", "4bQWA8ZVWVftu83HUe57moGk5Q4"));
+
+		Map resume = null;
 		try {
-			data=cloudinary.uploader().upload(resume.getBytes(),ObjectUtils.emptyMap());
-			
-		} catch (Exception e) {
+			Map<String, Object> uploadOptions = new HashMap<String, Object>();
+			uploadOptions.put("folder", "Resumes");
+			resume = cloudinary.uploader().upload(file.getBytes(), uploadOptions);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return (String) data.get("url");
+		return (String) resume.get("url");
+	}
+
+	public String viewJobs(HttpSession session, ModelMap map) {
+		PortalUser portalUser = (PortalUser) session.getAttribute("portalUser");
+		if (portalUser == null) {
+			session.setAttribute("failure", "Invalid Session");
+			return "home.html";
+		} else {
+			List<Job> jobs = jobDao.viewAllJobs();
+			if (jobs.isEmpty()) {
+				session.setAttribute("failure", "No Jobs Posted Yet");
+				return "redirect:/";
+			} else {
+				map.put("jobs", jobs);
+				return "applicant-view-jobs.html";
+			}
+		}
+	}
+
+	public String applyJob(int id, HttpSession session) {
+		PortalUser portalUser = (PortalUser) session.getAttribute("portalUser");
+		if (portalUser == null) {
+			session.setAttribute("failure", "Invalid Session");
+			return "home.html";
+		} else {
+			if (!portalUser.isProfileComplete()) {
+				session.setAttribute("failure", "First Complete Your Profile");
+				return "redirect:/";
+			} else {
+				Job job = jobDao.findById(id);
+				ApplicantDetails applicantDetails = portalUser.getApplicantDetails();
+				List<Job> appliedJobs = applicantDetails.getJobs();
+				boolean applied = false;
+				for (Job appliedJob : appliedJobs) {
+					if (job.getId() == appliedJob.getId()) {
+						applied = true;
+						break;
+					}
+				}
+
+				if (applied) {
+					session.setAttribute("failure", "Already Applied Wait for Response or Contact - "
+							+ job.getRecruiterDetails().getCompanyMobileNumber());
+					return "redirect:/";
+				} else {
+					job.getApplicantDetails().add(applicantDetails);
+					appliedJobs.add(job);
+					userDao.saveUser(portalUser);
+					jobDao.saveJob(job);	
+					session.setAttribute("success", "Applied for Job Success Wait for Response");
+					return "redirect:/";
+				}
+			}
+		}
 	}
 
 }

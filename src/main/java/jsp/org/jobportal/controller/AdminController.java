@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpSession;
+import jsp.org.jobportal.service.AdminService;
 
 @Controller
 @RequestMapping("/admin")
