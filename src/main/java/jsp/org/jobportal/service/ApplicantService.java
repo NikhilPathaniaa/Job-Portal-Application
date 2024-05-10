@@ -1,9 +1,11 @@
 package jsp.org.jobportal.service;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,10 +14,11 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
 import jakarta.servlet.http.HttpSession;
+import jsp.org.jobportal.dao.JobDao;
 import jsp.org.jobportal.dao.PortalUserDao;
 import jsp.org.jobportal.dto.ApplicantDetails;
+import jsp.org.jobportal.dto.Job;
 import jsp.org.jobportal.dto.PortalUser;
-
 
 @Service
 public class ApplicantService {

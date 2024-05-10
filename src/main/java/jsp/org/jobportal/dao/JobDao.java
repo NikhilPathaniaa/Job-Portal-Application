@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.stereotype.Repository;
 
+import jsp.org.jobportal.repository.JobRepository;
+
 @Repository
 public class JobDao {
 
