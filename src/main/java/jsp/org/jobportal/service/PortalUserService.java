@@ -62,21 +62,21 @@ public class PortalUserService {
 		}
 	}
 
-	public String submitOtp(int otp, int id, ModelMap map) {
-		PortalUser portalUser = userDao.findUserById(id);
-		if (otp == portalUser.getOtp()) {
-			System.out.println("Success- OTP Matched");
-			portalUser.setVerified(true);
-			userDao.saveUser(portalUser);
-			map.put("msg", "Account Created Success");
-			return "login.html";
-		} else {
-			System.out.println("Failure- OTP MissMatch");
-			map.put("msg", "Incorrect Otp! Try Again");
-			map.put("id", portalUser.getId());
-			return "enter-otp.html";
+		public String submitOtp(int otp, int id, ModelMap map) {
+			PortalUser portalUser = userDao.findUserById(id);
+			if (otp == portalUser.getOtp()) {
+				System.out.println("Success- OTP Matched");
+				portalUser.setVerified(true);
+				userDao.saveUser(portalUser);
+				map.put("msg", "Account Created Success");
+				return "login.html";
+			} else {
+				System.out.println("Failure- OTP MissMatch");
+				map.put("msg", "Incorrect Otp! Try Again");
+				map.put("id", portalUser.getId());
+				return "enter-otp.html";
+			}
 		}
-	}
 
 	public String resendOtp(int id, ModelMap map) {
 		PortalUser portalUser = userDao.findUserById(id);
